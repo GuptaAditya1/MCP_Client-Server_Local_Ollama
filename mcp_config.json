@@ -1,0 +1,20 @@
+{
+  "name": "Wikipedia MCP Server",
+  "description": "Fetches summaries from Wikipedia articles.",
+  "entrypoint": "server.py",
+  "transport": "http",
+  "port": 8000,
+  "tools": [
+    {
+      "name": "wikipedia_summary",
+      "description": "Fetches a summary of a Wikipedia article given its topic."
+    }
+  ],
+  "models": [
+    {
+      "name": "gemma3:1b",
+      "provider": "ollama",
+      "endpoint": "http://localhost:11434"
+    }
+  ]
+}
