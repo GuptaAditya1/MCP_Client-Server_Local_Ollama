@@ -24,18 +24,23 @@ Install **Ollama Desktop**
 Install the **gemma3:1b** model:
 ```bash
 ollama pull gemma3:1b
-
+```
 ### **Step 3 — Set Up the Python Virtual Environment**
 
 Create a virtual environment:
 ```bash
 python -m venv venv
-
+```
 Activate the virtual environment (PowerShell):
 ```bash
+```
 venv\Scripts\Activate
-
 
 Install dependencies:
 ```bash
 pip install -r requirements.txt
+```
+### **Step 4 — Run the MCP Client**
+```bash
+python mcp_client.py
+```
