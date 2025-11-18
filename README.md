@@ -33,8 +33,8 @@ python -m venv venv
 ```
 Activate the virtual environment (PowerShell):
 ```bash
-```
 venv\Scripts\Activate
+```
 
 Install dependencies:
 ```bash
