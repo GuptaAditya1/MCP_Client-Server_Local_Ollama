@@ -1,14 +1,25 @@
 import asyncio
 import httpx
+import json
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
 
-async def chat_with_ollama(prompt: str, model: str = "gemma3:1b") -> str:
+# Load configuration
+with open("config.json") as f:
+    config = json.load(f)
+
+
+async def chat_with_ollama(prompt: str, model: str = None) -> str:
     """Send a prompt to Ollama and get the response."""
+    if model is None:
+        model = config["models"][0]["name"]
+    
+    endpoint = config["models"][0]["endpoint"]
+    
     async with httpx.AsyncClient(timeout=60.0) as client:
         response = await client.post(
-            "http://localhost:11434/api/generate",
+            f"{endpoint}/api/generate",
             json={
                 "model": model,
                 "prompt": prompt,
@@ -24,14 +35,15 @@ async def chat_with_ollama(prompt: str, model: str = "gemma3:1b") -> str:
 async def main():
     """Main function to run the MCP client with Ollama."""
     
-    # Configure the MCP server connection
+    # Configure the MCP server connection from config
     server_params = StdioServerParameters(
         command="python",
-        args=["server.py"],
+        args=[config["entrypoint"]],
         env=None
     )
     
-    print("Starting MCP Client with Ollama (gemma3:1b)...")
+    model_name = config["models"][0]["name"]
+    print(f"Starting MCP Client with Ollama ({model_name})...")
     print("-" * 60)
     
     async with stdio_client(server_params) as (read, write):

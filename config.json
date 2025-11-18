@@ -2,7 +2,7 @@
   "name": "Wikipedia MCP Server",
   "description": "Fetches summaries from Wikipedia articles.",
   "entrypoint": "server.py",
-  "transport": "http",
+  "transport": "stdio",
   "port": 8000,
   "tools": [
     {
