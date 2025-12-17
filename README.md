@@ -2,7 +2,7 @@
 
 This project implements a lightweight **Model Context Protocol (MCP)** client and server that work together to provide fast, structured access to **Wikipedia article summaries**.  
 It allows any MCP-compatible AI model or toolchain to request a topic and receive a clean, concise summary pulled directly from Wikipedia.
-This project is also a reusable template for developing and testing custom MCP clients and servers locally, accelerating future MCP-based tool development.
+This project is also a **reusable template** for developing and testing custom MCP clients and servers locally, accelerating future MCP-based tool development.
 
 
 ## 🚀 Features
